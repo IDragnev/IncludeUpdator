@@ -1,4 +1,4 @@
-defmodule IncludeUpdator.ChandgeFilesTest do
+defmodule IncludeUpdator.ChandgedFilesTest do
   use ExUnit.Case
 
   alias IncludeUpdator.ChangedFiles, as: ICF
