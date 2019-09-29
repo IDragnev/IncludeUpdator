@@ -33,3 +33,10 @@ double g();
 int f();
 double g();
 ```
+
+## Usage:
+`git clone https://github.com/IDragnev/IncludeUpdator.git`   
+`cd IncludeUpdator`  
+`mix escript.build`  
+`./include_updator <root_dir>`  
+or `./include_updator --help`  for usage help
