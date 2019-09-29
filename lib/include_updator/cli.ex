@@ -2,7 +2,7 @@ defmodule IncludeUpdator.CLI do
 
     @processes_count 4
 
-    def run(argv) do
+    def main(argv) do
         argv
         |> parse_args()
         |> process_args()
@@ -34,9 +34,10 @@ defmodule IncludeUpdator.CLI do
         IO.puts """
         usage: include_updator <root_dir> [processes_count | #{@processes_count}]
         """
+        System.halt(0)
     end
-    defp process_args(_) do
-        #TODO
+    defp process_args({root_dir, workers_count}) do
+        IncludeUpdator.Application.start(root_dir, workers_count)
     end
 
 end
