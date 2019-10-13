@@ -14,13 +14,13 @@ defmodule IncludeUpdator.Gatherer do
   def add_filename(filename) do
     GenServer.cast @gatherer, {:add_filename, filename}
   end
+
   #server implementation
   def init(workers_count) do
-    Process.send_after(self(), :kickoff, 0)
-    {:ok, workers_count}
+    {:ok, workers_count, {:continue, :kickoff}}
   end
 
-  def handle_info(:kickoff, workers_count) do
+  def handle_continue(:kickoff, workers_count) do
     alias IncludeUpdator.WorkerSupervisor
     1..workers_count
     |> Enum.each(fn _ -> WorkerSupervisor.add_worker() end)
